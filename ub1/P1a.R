@@ -14,3 +14,5 @@ minor.tick(nx=2,ny=5)
 # barplot(myData,main = "Monatliche Durchschnittskurse einer Aktie im Verlauf eines Jahres")
 
 
+
+myData[1]

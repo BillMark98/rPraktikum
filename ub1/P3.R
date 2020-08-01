@@ -1,5 +1,4 @@
-
-make.Fn = function(argument,cumHaeufigkeit) {
+  make.Fn = function(argument,cumHaeufigkeit) {
     Fn = function(arg) {
         # how to sort the x ?
         # argument = x[1,]
@@ -34,6 +33,8 @@ touristFn = make.Fn(argument,cumHaeufigkeit)
 touristFn(9) - touristFn(3)
 
 
+
+
 # plot
 # extend the range of variable
 argument.ext = c(0,argument,25)
@@ -41,10 +42,10 @@ cumHaeufigkeit.ext = cumsum(c(0,haeufigkeit,0))
 par(las = 1)
 plot(argument.ext,cumHaeufigkeit.ext,type = "s",
      xlab = "x(Tage)", 
-     ylab = "Fn(x)",
-     main = "empirische Verteilungsfunktion fuer
+      ylab = "Fn(x)",
+      main = "empirische Verteilungsfunktion fuer
       die Verweilstagen der Touristen"
-)
+     )
 
 
 myFn = ecdf(x = argument.ext)
@@ -64,15 +65,16 @@ Tage = c(2,3,7,10,14,21)
 Anz = c(6,2,12,6,10,4)
 
 hrel = Anz/sum(Anz)
+# should add 0
 cumhrel = cumsum(c(0,hrel))
 
 Fn = function(t) {
-    k = sum(Tage <= t)
-    # cumhrel[1] = 0, [2] = the first non zero value....
-    cumhrel[k+1]
+  k = sum(Tage <= t)
+  # cumhrel[1] = 0, [2] = the first non zero value....
+  cumhrel[k+1]
 }
 for(i in seq_along(Tage)) {
-    print(Fn(Tage[i]))
+  print(Fn(Tage[i]))
 }
 
 Vectorize(Fn)(Tage)
@@ -91,7 +93,7 @@ plot(Tage.erw, Fn.erw, type = "s",col = "blue",
      ylab = "Fn(x)",
      main = "empirische Verteilungsfunktion fuer
       die Verweilstagen der Touristen"
-)
+     )
 points(Tage,cumhrel[2:7],col = "blue")
 
 
@@ -104,10 +106,12 @@ plot(x,y,type = "p",col = "blue",pch = 45,
      ylab = "Fn(x)",
      main = "empirische Verteilungsfunktion fuer
       die Verweilstagen der Touristen"
-)
+     )
 points(Tage,cumsum(hrel),col = "blue",pch = 15)
 
 # variant 3
+# note that for the step function (see also documentation),
+# the first variable is of length 1 smaller than the second
 Fn.neu = stepfun(Tage,cumhrel)
 par(las = 1)
 plot(Fn.neu, col = "blue", verticals = FALSE,
@@ -116,7 +120,7 @@ plot(Fn.neu, col = "blue", verticals = FALSE,
      ylab = "Fn(x)",
      main = "empirische Verteilungsfunktion fuer
       die Verweilstagen der Touristen"
-)
+     )
 
 # variant 4
 Tage.new = c(rep(2,6),rep(3,2),rep(7,12),rep(10,6),rep(14,10),rep(21,4))

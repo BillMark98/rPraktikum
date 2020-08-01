@@ -24,3 +24,4 @@ iqr = IQR(zeiten,type = 2)
 box.erg$stats[2,1] - iqr
 box.erg$stats[4,1] + iqr
 range(zeiten)
+
